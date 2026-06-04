@@ -29,6 +29,7 @@ def welcome_page():
     print("====================================")
     print("Type 'start' to begin.")
     print("Type 'help' to see available functions.")
+    print("Type 'credits' to go see contributions")
     print("Type 'off' to exit.")
     print("------------------------------------")
     return input("Selection: ").lower().strip()
@@ -44,6 +45,21 @@ def show_help():
     print("Constants: pi, e")
     print("Example expression: (sin(pi/2) + log(10)) ^ 2")
     input("\nPress Enter to return to menu...")
+
+
+def show_credit():
+    """Shows who made this program"""
+    print("█████████████████████████████████████████")
+    print("█─▄▄▄─█▄─▄▄▀█▄─▄▄─█▄─▄▄▀█▄─▄█─▄─▄─█─▄▄▄▄█")
+    print("█─███▀██─▄─▄██─▄█▀██─██─██─████─███▄▄▄▄─█")
+    print("▀▄▄▄▄▄▀▄▄▀▄▄▀▄▄▄▄▄▀▄▄▄▄▀▀▄▄▄▀▀▄▄▄▀▀▄▄▄▄▄▀")
+    print(" ")
+    print(" ")
+    print(" ")
+    print("Made by TheTank87")
+    print(
+        "Website: https://tdf-the-diat-formation.fandom.com/wiki/T.D.F._The_Diat_Formation_Wiki"
+    )
 
 
 def run_calculator():
@@ -96,6 +112,8 @@ while True:
         run_calculator()
     elif choice == "help":
         show_help()
+    elif choice == "credits":
+        show_credit()
     elif choice == "off":
         print("Powering off...")
         break  # Initiates a break to exit the program [3]
