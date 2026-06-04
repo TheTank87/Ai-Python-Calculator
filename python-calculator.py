@@ -1,5 +1,5 @@
 def ask_to_continue():
-    """Asks the user if they wantto perform another calculation."""
+    """Asks the user if they want to perform another calculation."""
     # input() reads the response as a string [4, 5]
     # .lower() ensures 'YES' or 'Yes' are treated the same as 'yes' [6, 7]
     choice = input("Do you want to start another calculation? (yes/no): ").lower()
