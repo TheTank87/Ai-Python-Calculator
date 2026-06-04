@@ -29,7 +29,7 @@ def welcome_page():
     print("====================================")
     print("Type 'start' to begin.")
     print("Type 'help' to see available functions.")
-    print("Type 'credits' to go see contributions")
+    print("Type 'credits' to go see contributions.")
     print("Type 'off' to exit.")
     print("------------------------------------")
     return input("Selection: ").lower().strip()
