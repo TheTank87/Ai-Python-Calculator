@@ -1,54 +1,103 @@
-def welcome_page():
-    """Introduces the program and handles the start/off selection."""
-    print("------------------------------------")
-    print("Welcome to the Potato Calculator!")
-    print("Type 'start' to begin or 'off' to exit.")
-    print("------------------------------------")
+import math
 
-    # input() reads the user's choice as a string
-    choice = input("Your selection: ").lower()
-    return choice
+
+# Define custom functions for csc, sec, and cot since they are 1/trig_func
+def csc(x):
+    return 1 / math.sin(x)
+
+
+def sec(x):
+    return 1 / math.cos(x)
+
+
+def cot(x):
+    return 1 / math.tan(x)
+
+
+def welcome_page():
+    """Introduces the program and handles the start/off/help selection."""
+    print("\n====================================")
+    print("   SCIENTIFIC PYTHON CALCULATOR")
+    print(" ")
+    print("██╗░░██╗░█████╗░░█████╗░██╗░░██╗░█████╗░████████╗██╗███╗░░░███╗███████╗")
+    print("██║░░██║██╔══██╗██╔══██╗██║░██╔╝██╔══██╗╚══██╔══╝██║████╗░████║██╔════╝")
+    print("███████║███████║██║░░╚═╝█████═╝░███████║░░░██║░░░██║██╔████╔██║█████╗░░")
+    print("██╔══██║██╔══██║██║░░██╗██╔═██╗░██╔══██║░░░██║░░░██║██║╚██╔╝██║██╔══╝░░")
+    print("██║░░██║██║░░██║╚█████╔╝██║░╚██╗██║░░██║░░░██║░░░██║██║░╚═╝░██║███████╗")
+    print("╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝╚══════╝")
+    print(" ")
+    print("====================================")
+    print("Type 'start' to begin.")
+    print("Type 'help' to see available functions.")
+    print("Type 'off' to exit.")
+    print("------------------------------------")
+    return input("Selection: ").lower().strip()
+
+
+def show_help():
+    """Lists all available functions for the user."""
+    print("\n--- Available Functions & Constants ---")
+    print("Basic: +, -, *, /, ^ (exponent), ( )")
+    print("Trig: sin, cos, tan, csc, sec, cot")
+    print("Inverse Trig: asin, acos, atan")
+    print("Logarithms: log (natural log), log10")
+    print("Constants: pi, e")
+    print("Example expression: (sin(pi/2) + log(10)) ^ 2")
+    input("\nPress Enter to return to menu...")
 
 
 def run_calculator():
-    """Main calculator logic from the previous program."""
+    """Main expression evaluator logic."""
+    print("\n--- Expression Mode ---")
+    print("Enter your full math expression (or 'back' for menu):")
+
+    # Environment for eval() to recognize trig/math functions safely
+    safe_dict = {
+        "sin": math.sin,
+        "cos": math.cos,
+        "tan": math.tan,
+        "asin": math.asin,
+        "acos": math.acos,
+        "atan": math.atan,
+        "csc": csc,
+        "sec": sec,
+        "cot": cot,
+        "log": math.log,
+        "log10": math.log10,
+        "pi": math.pi,
+        "e": math.e,
+        "sqrt": math.sqrt,
+    }
+
     while True:
-        try:
-            num1 = float(input("Enter the first number: "))
-            operation = input("Enter an operation (+, -, *, /): ")
-            num2 = float(input("Enter the second number: "))
+        expr = input("> ").lower().strip()
 
-            if operation == "+":
-                result = num1 + num2
-            elif operation == "-":
-                result = num1 - num2
-            elif operation == "*":
-                result = num1 * num2
-            elif operation == "/":
-                # Division by zero handled in previous conversation
-                result = num1 / num2 if num2 != 0 else "Error! Division by zero."
-            else:
-                result = "Invalid operation."
-
-            print(f"Result: {result}")
-
-        except ValueError:
-            print("Error: Please enter valid numbers.")
-
-        # Ask if they want another calculation before going back to the welcome page
-        again = input("Do you want to start another calculation? (yes/no): ").lower()
-        if again != "yes":
+        if expr == "back":
             break
 
+        # Replace user '^' with Python's '**' operator [5, 6]
+        expr = expr.replace("^", "**")
 
-# The program starts here
+        try:
+            # Evaluate the string as a mathematical expression [7, 8]
+            result = eval(expr, {"__builtins__": None}, safe_dict)
+            print(f"Result: {result}")
+        except ZeroDivisionError:
+            print("Error: Division by zero.")[3, 9]
+        except Exception as e:
+            print(f"Error: Invalid expression. Check your syntax. ({e})")[10, 11]
+
+
+# Main program loop
 while True:
-    user_choice = welcome_page()
+    choice = welcome_page()
 
-    if user_choice == "start":
+    if choice == "start":
         run_calculator()
-    elif user_choice == "off":
+    elif choice == "help":
+        show_help()
+    elif choice == "off":
         print("Powering off...")
-        break  # Initiates a break to exit the program
+        break  # Initiates a break to exit the program [3]
     else:
-        print("Invalid selection. Please type 'start' or 'off'.")
+        print("Invalid selection. Please type 'start', 'help', or 'off'.")
