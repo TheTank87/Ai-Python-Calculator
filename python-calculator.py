@@ -17,7 +17,7 @@ def cot(x):
 def welcome_page():
     """Introduces the program and handles the start/off/help selection."""
     print("\n====================================")
-    print("   SCIENTIFIC PYTHON CALCULATOR")
+    print("   SCIENTIFIC PYTHON CALCULATOR by:TheTank87")
     print(" ")
     print("██╗░░██╗░█████╗░░█████╗░██╗░░██╗░█████╗░████████╗██╗███╗░░░███╗███████╗")
     print("██║░░██║██╔══██╗██╔══██╗██║░██╔╝██╔══██╗╚══██╔══╝██║████╗░████║██╔════╝")
