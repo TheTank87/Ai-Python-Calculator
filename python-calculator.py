@@ -1,7 +1,7 @@
 def welcome_page():
     """Introduces the program and handles the start/off selection."""
     print("------------------------------------")
-    print("Welcome to the DIAT Calculator!")
+    print("Welcome to the Potato Calculator!")
     print("Type 'start' to begin or 'off' to exit.")
     print("------------------------------------")
 
